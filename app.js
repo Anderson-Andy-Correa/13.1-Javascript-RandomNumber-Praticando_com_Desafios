@@ -32,9 +32,17 @@ function mostrarNumeros() {
     let texto = `Números sorteados: ${listaNumeros.join(', ')}`;
     document.getElementById('texto_resultado').innerText = texto;
     listaNumeros = [];
-    document.getElementById('btn-sortear').classList.replace('container__botao', 'container__botao-desabilitado');
-    document.getElementById('btn-reiniciar').classList.replace('container__botao-desabilitado', 'container__botao');
+    botaoReiniciar = document.getElementById('btn-reiniciar');
+    alterarClasseDoBotao(botaoReiniciar)
 };
+
+function alterarClasseDoBotao(botao) {
+    if (botao.classList.contains('container__botao-desabilitado')) {
+        botao.classList.replace('container__botao-desabilitado', 'container__botao');
+    } else {
+        botao.classList.replace('container__botao', 'container__botao-desabilitado');
+    };
+}
 
 function reiniciar() {
     document.getElementById('quantidade').value = '';
@@ -44,6 +52,5 @@ function reiniciar() {
     let texto = `Números sorteados:  nenhum até agora`;
     document.getElementById('texto_resultado').innerText = texto;
 
-    document.getElementById('btn-sortear').classList.replace('container__botao-desabilitado', 'container__botao');
-    document.getElementById('btn-reiniciar').classList.replace('container__botao', 'container__botao-desabilitado');
+    alterarClasseDoBotao(document.getElementById('btn-reiniciar'))
 }
