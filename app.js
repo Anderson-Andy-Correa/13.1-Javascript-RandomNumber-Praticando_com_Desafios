@@ -32,15 +32,18 @@ function mostrarNumeros() {
     let texto = `Números sorteados: ${listaNumeros.join(', ')}`;
     document.getElementById('texto_resultado').innerText = texto;
     listaNumeros = [];
-    botaoReiniciar = document.getElementById('btn-reiniciar');
-    alterarClasseDoBotao(botaoReiniciar)
+    if (document.getElementById('btn-reiniciar').getAttribute('disabled') === 'true') {
+        alterarClasseDoBotao(document.getElementById('btn-reiniciar'))
+    }
 };
 
 function alterarClasseDoBotao(botao) {
     if (botao.classList.contains('container__botao-desabilitado')) {
         botao.classList.replace('container__botao-desabilitado', 'container__botao');
+        botao.removeAttribute('disabled');
     } else {
         botao.classList.replace('container__botao', 'container__botao-desabilitado');
+        botao.setAttribute('disabled', 'true');
     };
 }
 
